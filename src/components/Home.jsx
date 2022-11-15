@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = ({ data }) => {
   return (
@@ -18,10 +19,18 @@ const Home = ({ data }) => {
               key={item.id}
               className="border-b text-center h-10 cursor-pointer hover:bg-gray-200"
             >
-              <td>{item.userName}</td>
-              <td>{item.usd}</td>
-              <td>{item.uzs}</td>
-              <td>{item.rubl}</td>
+              <td>
+                <Link to={item.userName}> {item.userName} </Link>
+              </td>
+              <td>
+                <Link to={item.userName}> {item.usd} </Link>
+              </td>
+              <td>
+                <Link to={item.userName}> {item.uzs} </Link>
+              </td>
+              <td>
+                <Link to={item.userName}> {item.rubl} </Link>
+              </td>
             </tr>
           ))}
         </tbody>

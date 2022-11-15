@@ -14,6 +14,8 @@ import Exit from "./components/pages/Exit";
 import Usd from "./components/pages/Usd";
 import Uzs from "./components/pages/Uzs";
 import Rubl from "./components/pages/Rubl";
+import User from "./components/pages/User";
+import Personal from "./components/pages/Personal";
 function App() {
   const [search, setSearch] = useState("");
   const [user, setUser] = useState([]);
@@ -210,7 +212,7 @@ function App() {
           </form>
         </div>
         <div
-          className="user-menu fixed overflow-y-scroll duration-500 py-6 top-0 h-screen bg-blue-600"
+          className="user-menu fixed overflow-y-scroll duration-500 py-6 top-0 h-screen bg-blue-600 flex justify-center items-center flex-col gap-6"
           ref={getUser}
         >
           <div
@@ -219,6 +221,14 @@ function App() {
           >
             <HiXMark />
           </div>
+          <h1 className="text-5xl text-white">User Name</h1>
+          <NavLink
+            to={"/personal"}
+            className="text-white py-2 px-4 rounded-md text-2xl"
+            onClick={handleUser}
+          >
+            Shaxsiy Ma'lumotlar
+          </NavLink>
         </div>
         <Routes>
           <Route path={"/"} element={<Home data={showSearch(user)} />} />
@@ -227,6 +237,8 @@ function App() {
           <Route path={"/rubl"} element={<Rubl data={showSearch(user)} />} />
           <Route path={"/enter"} element={<Enter />} />
           <Route path={"/exit"} element={<Exit />} />
+          <Route path={"/personal"} element={<Personal />} />
+          <Route path={"/:name"} element={<User user={user.userName} />} />
         </Routes>
       </div>
     </Router>

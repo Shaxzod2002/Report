@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "userName": "Muhammad",
+    "usd": 200,
+    "uzs": 2000000,
+    "rubl": 4000
+  },
+  {
+    "id": 2,
+    "userName": "Eldor",
+    "usd": 200,
+    "uzs": 12000000,
+    "rubl": 34000
+  },
+  {
+    "id": 4,
+    "userName": "Doston",
+    "usd": 300,
+    "uzs": 4000000,
+    "rubl": 3000
+  },
+  {
+    "id": 5,
+    "userName": "Humoyun",
+    "usd": 200,
+    "uzs": 2053000,
+    "rubl": 44300
+  }
+]

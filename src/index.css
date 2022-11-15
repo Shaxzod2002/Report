@@ -1,13 +1,126 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 50px;
+}
+
+.filter-btn-active {
+  background-color: blue;
+}
+a.active {
+  background-color: blue !important;
+}
+
+.drop-dawn-menu {
+  width: 40%;
+  left: -40%;
+}
+
+.user-menu {
+  width: 40%;
+  right: -40%;
+}
+
+.menu-active {
+  left: 0;
+}
+
+.user-active {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  nav {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 30px;
+    gap: 20px;
+  }
+  nav > div {
+    width: 100% !important;
+    min-height: 50px !important;
+  }
+  nav > div:first-child {
+    position: relative;
+    left: -30px !important;
+    margin-top: 20px;
+    width: 80% !important;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav .filter-box {
+    width: 100% !important;
+  }
+
+  nav .filter-box .filter {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .drop-dawn-menu {
+    width: 100%;
+    left: -100%;
+  }
+
+  .user-menu {
+    width: 100%;
+    right: -100%;
+  }
+
+  .menu-active {
+    left: 0;
+  }
+
+  .user-active {
+    right: 0;
+  }
+
+  .user-box {
+    width: 50px !important;
+    right: 30px;
+    top: 20px;
+    position: absolute;
+  }
+
+  header {
+    padding: 0 10px;
+    min-height: 50vh !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  nav .menu {
+    width: 50%;
+  }
+  nav .search-box {
+    width: 50%;
+  }
+
+  .drop-dawn-menu {
+    width: 50%;
+    left: -50%;
+  }
+
+  .user-menu {
+    width: 50%;
+    right: -50%;
+  }
+
+  .menu-active {
+    left: 0;
+  }
+
+  .user-active {
+    right: 0;
+  }
 }

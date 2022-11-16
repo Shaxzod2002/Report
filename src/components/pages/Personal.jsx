@@ -1,14 +1,16 @@
 import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 const Personal = () => {
-  const [eye, setEye] = useState(false);
+  const [eye, setEye] = useState(true);
   const showPassword = useRef("");
   const handlePassword = () => {
-      if (!eye) {
-        showPassword.current.type = "text";
-      } else if (eye) {
-          showPassword.current.type = "password";
+    if (eye) {
+      showPassword.current.type = "text";
+      setEye(false);
+    } else {
+      showPassword.current.type = "password";
+      setEye(true);
     }
   };
   return (
@@ -27,7 +29,7 @@ const Personal = () => {
             className="eye absolute text-2xl right-10 cursor-pointer text-blue-600"
             onClick={handlePassword}
           >
-            <AiFillEyeInvisible />
+            {eye ? <AiFillEyeInvisible /> : !eye ? <AiFillEye /> : null}
           </div>
         </div>
         <NavLink

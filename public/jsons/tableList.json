@@ -26,5 +26,12 @@
     "usd": 200,
     "uzs": 2053000,
     "rubl": 44300
+  },
+  {
+    "id": 6,
+    "userName": "Abdurashid",
+    "usd": 400,
+    "uzs": 230421,
+    "rubl": 43262
   }
 ]

@@ -4,34 +4,44 @@
     "userName": "Muhammad",
     "usd": 200,
     "uzs": 2000000,
-    "rubl": 4000
+    "rubl": 4000,
+    "phone": "+998945684712",
+    "comment": "lorem impsum dolor"
   },
   {
     "id": 2,
     "userName": "Eldor",
     "usd": 200,
     "uzs": 12000000,
-    "rubl": 34000
+    "rubl": 34000,
+    "phone": "+998945684712",
+    "comment": "lorem impsum dolor"
   },
   {
     "id": 4,
     "userName": "Doston",
     "usd": 300,
     "uzs": 4000000,
-    "rubl": 3000
+    "rubl": 3000,
+    "phone": "+998945684712",
+    "comment": "lorem impsum dolor"
   },
   {
     "id": 5,
     "userName": "Humoyun",
     "usd": 200,
     "uzs": 2053000,
-    "rubl": 44300
+    "rubl": 44300,
+    "phone": "+998945684712",
+    "comment": "lorem impsum dolor"
   },
   {
     "id": 6,
     "userName": "Abdurashid",
     "usd": 400,
     "uzs": 230421,
-    "rubl": 43262
+    "rubl": 43262,
+    "phone": "+998945684712",
+    "comment": "lorem impsum dolor"
   }
 ]

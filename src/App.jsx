@@ -16,32 +16,41 @@ import Uzs from "./components/pages/Uzs";
 import Rubl from "./components/pages/Rubl";
 import User from "./components/pages/User";
 import Personal from "./components/pages/Personal";
+import PersonalPage from "./components/pages/PersonalPage";
+import NewPersonal from "./components/pages/NewPersonal";
 function App() {
   const [search, setSearch] = useState("");
   const [user, setUser] = useState([]);
   const [newUser, setNewUser] = useState("");
   const [newPhone, setNewPhone] = useState("");
-  const [newCurrency, setNewCurrency] = useState("");
+  const [comment, setComment] = useState("");
+  const [currency, setCurrency] = useState([]);
+
+  useEffect(() => {
+    const showCurrency = async () =>
+      setCurrency(await (await axios.get("jsons/currency.json")).data);
+    showCurrency();
+  }, []);
   useEffect(() => {
     const showUser = async () =>
       setUser(await (await axios.get("./jsons/tableList.json")).data);
     showUser();
   }, []);
-
   const showSearch = (data) => {
     return data.filter((item) => item.userName.toLowerCase().includes(search));
   };
-
   const getMenu = useRef();
   const getUser = useRef();
   const handleMenu = () => {
     getMenu.current.classList.toggle("menu-active");
     setNewUser("");
     setNewPhone("");
-    setNewCurrency("");
+    setComment("");
     document.getElementById("new-user").value = "";
     document.getElementById("new-phone").value = "";
     document.getElementById("new-currency").value = "";
+    document.getElementById("new-comment").value = "";
+    document.getElementById("comment-currency").value = "";
   };
   const handleUser = () => {
     getUser.current.classList.toggle("user-active");
@@ -124,7 +133,7 @@ function App() {
         >
           <div
             className="absolute top-5 right-5 text-3xl text-white cursor-pointer"
-            onClick={handleMenu}
+            onClick={() => handleMenu()}
           >
             <HiXMark />
           </div>
@@ -160,6 +169,8 @@ function App() {
               <textarea
                 className="border border-black rounded-md resize-none py-1 px-2 w-[90%] outline-none"
                 placeholder="Qo'shimcha"
+                id="new-comment"
+                onChange={(e) => setComment(e.target.value)}
               ></textarea>
             </div>
             <button
@@ -169,40 +180,18 @@ function App() {
               onClick={(e) => {
                 e.preventDefault();
                 if (newUser && newPhone) {
-                  handleMenu();
-                }
-              }}
-            >
-              Qo'shish
-            </button>
-          </form>
-          <h2 className="text-white my-3 text-2xl">Valyuta Qo'shish</h2>
-          <form className="bg-white w-[80%] min-h-[400px] rounded-md flex flex-col justify-center items-center gap-4">
-            <div className="flex flex-col w-full pl-[7.5%] gap-2">
-              <label>Valyuta Nomini Kiriting</label>
-              <input
-                type="text"
-                className="w-[90%] p-2 border border-black rounded-md outline-none"
-                id="new-currency"
-                placeholder="Ism"
-                required
-                onChange={(e) => setNewCurrency(e.target.value)}
-              />
-            </div>
-            <div className="flex flex-col w-full pl-[7.5%] gap-2">
-              <label>Qo'shimcha Ma'lumot</label>
-              <textarea
-                className="border border-black rounded-md resize-none py-1 px-2 w-[90%] outline-none"
-                placeholder="Qo'shimcha"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              to={"/"}
-              className="bg-green-500 py-2 px-4 rounded-md text-white hover:bg-green-600"
-              onClick={(e) => {
-                e.preventDefault();
-                if (newCurrency) {
+                  setUser([
+                    ...user,
+                    {
+                      id: 10,
+                      userName: newUser,
+                      usd: 0,
+                      uzs: 0,
+                      rubl: 0,
+                      phone: newPhone,
+                      comment: comment,
+                    },
+                  ]);
                   handleMenu();
                 }
               }}
@@ -231,13 +220,24 @@ function App() {
           </NavLink>
         </div>
         <Routes>
-          <Route path={"/"} element={<Home data={showSearch(user)} />} />
-          <Route path={"/usd"} element={<Usd data={showSearch(user)} />} />
-          <Route path={"/uzs"} element={<Uzs data={showSearch(user)} />} />
+          <Route
+            path={"/"}
+            element={<Home data={showSearch(user)} names={currency} />}
+          />
+          <Route
+            path={"/usd"}
+            element={<Usd data={showSearch(user)} names={currency} />}
+          />
+          <Route
+            path={"/uzs"}
+            element={<Uzs data={showSearch(user)} names={currency} />}
+          />
           <Route path={"/rubl"} element={<Rubl data={showSearch(user)} />} />
           <Route path={"/enter"} element={<Enter />} />
           <Route path={"/exit"} element={<Exit />} />
           <Route path={"/personal"} element={<Personal />} />
+          <Route path={"/personal/user"} element={<PersonalPage />} />
+          <Route path={"/personal/new-password"} element={<NewPersonal />} />
           <Route path={"/:name"} element={<User user={user.userName} />} />
         </Routes>
       </div>

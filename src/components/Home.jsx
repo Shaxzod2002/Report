@@ -6,8 +6,8 @@ const Home = ({ data }) => {
     <header className="w-full min-h-[calc(100vh-80px)] flex justify-center items-center">
       <table className="border w-[800px] max-h-[90%]">
         <thead>
-          <tr className="border-b h-10">
-            <th>Ismi</th>
+          <tr>
+            <th>Ism</th>
             <th>USD</th>
             <th>UZS</th>
             <th>RUBL</th>
@@ -20,16 +20,40 @@ const Home = ({ data }) => {
               className="border-b text-center h-10 cursor-pointer hover:bg-gray-200"
             >
               <td>
-                <Link to={item.userName}> {item.userName} </Link>
+                <Link
+                  to={item.userName}
+                  className="w-full h-10 flex justify-center items-center"
+                >
+                  {" "}
+                  {item.userName}{" "}
+                </Link>
               </td>
               <td>
-                <Link to={item.userName}> {item.usd} </Link>
+                <Link
+                  to={item.userName}
+                  className="w-full h-10 flex justify-center items-center"
+                >
+                  {" "}
+                  {item.usd}{" "}
+                </Link>
               </td>
               <td>
-                <Link to={item.userName}> {item.uzs} </Link>
+                <Link
+                  to={item.userName}
+                  className="w-full h-10 flex justify-center items-center"
+                >
+                  {" "}
+                  {item.uzs}{" "}
+                </Link>
               </td>
               <td>
-                <Link to={item.userName}> {item.rubl} </Link>
+                <Link
+                  to={item.userName}
+                  className="w-full h-10 flex justify-center items-center"
+                >
+                  {" "}
+                  {item.rubl}{" "}
+                </Link>
               </td>
             </tr>
           ))}

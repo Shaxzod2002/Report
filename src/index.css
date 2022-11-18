@@ -37,6 +37,18 @@ a.active {
   right: 0;
 }
 
+.personal-password.active {
+  cursor: not-allowed;
+}
+
+.personal-password {
+  cursor: pointer;
+}
+
+table thead th {
+  text-transform: uppercase;
+}
+
 @media (max-width: 768px) {
   nav {
     position: relative;
